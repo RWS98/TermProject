@@ -14,9 +14,10 @@ char Wire::getValue() {
 	return wireValue;
 }
 
-void Wire::setName(std::string name) {
-	this->name = name;
+void Wire::setName(std::string str) {
+	this->name = str;
 }
+
 std::string Wire::getName() {
 	return this->name;
 }

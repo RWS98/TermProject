@@ -28,7 +28,7 @@ int main() {
 		cout << currEvent.getTime() << "\t";
 	}
 	*/
-	Gate gate;
+	/*Gate gate;
 
 	Wire *wire0 = new Wire();
 	Wire *wire1 = new Wire();
@@ -56,7 +56,17 @@ int main() {
 	c = gate.getGateOutput(XOR, wireX, wire1);
 	cout << c << endl;
 	c = gate.getGateOutput(XOR, wireX, wireX);
-	cout << c << endl;
+	cout << c << endl;*/
+
+	Circuit theCircuit;
+
+	theCircuit.parseCircuit("Circuit1.txt");
+	theCircuit.parseVector();
+
+
+
+
+
 
 	return 0; 
 }
