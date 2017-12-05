@@ -25,6 +25,7 @@ class Circuit {
 		std::priority_queue<Event> pQ;
 	public:
 		Circuit();
+		~Circuit();
 		Wire *getWirePtrFromWireNum(int num);
 		Wire *getWirePtrFromWireName(std::string s);
 		void checkWire(int wireNum);

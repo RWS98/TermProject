@@ -4,6 +4,18 @@ Circuit::Circuit() {
 
 }
 
+Circuit::~Circuit()
+{
+	for (int i = 0; i < MAX_WIRES; i++)
+	{
+		delete wireArray[i];
+	}
+	for (int i = 0; i < MAX_GATES; i++)
+	{
+		delete gateArray[i];
+	}
+}
+
 Wire* Circuit::getWirePtrFromWireNum(int num) {
 	return wireArray[num - 1];
 }
