@@ -26,9 +26,10 @@ class Circuit {
 	public:
 		Circuit();
 		Wire *getWirePtrFromWireNum(int num);
+		Wire *getWirePtrFromWireName(std::string s);
 		void checkWire(int wireNum);
 		void parseCircuit(std::string filename);
-		void parseVector();
+		void parseVector(std::string filename);
 };
 
 

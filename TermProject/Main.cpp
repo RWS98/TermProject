@@ -59,9 +59,14 @@ int main() {
 	cout << c << endl;*/
 
 	Circuit theCircuit;
+	string fileName;
 
-	theCircuit.parseCircuit("Circuit1.txt");
-	theCircuit.parseVector();
+	cout << "What circuit file would you like to open?  ";
+	cin >> fileName;
+	theCircuit.parseCircuit(fileName);
+	cout << "What vector file would you like to open?  ";
+	cin >> fileName;
+	theCircuit.parseVector(fileName);
 
 
 

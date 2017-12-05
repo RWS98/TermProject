@@ -8,6 +8,19 @@ Wire* Circuit::getWirePtrFromWireNum(int num) {
 	return wireArray[num - 1];
 }
 
+Wire * Circuit::getWirePtrFromWireName(std::string s)
+{
+	for (int i = 0; i < MAX_WIRES; i++)
+	{
+		if (wireArray[i]->getName() == s)
+		{
+			return wireArray[i];
+		}
+		else
+			return nullptr;
+	}
+}
+
 void Circuit::checkWire(int wireNum)
 {
 	if (wireArray[wireNum - 1] == NULL)
@@ -34,7 +47,7 @@ void Circuit::parseCircuit(std::string filename) {
 	int output;
 
 
-	file.open("Circuit1.txt");
+	file.open(filename);
 
 	while (!file.eof())
 	{
@@ -200,13 +213,13 @@ void Circuit::parseCircuit(std::string filename) {
 		}
 	}
 
-	cout << "test" << endl;
+	cout << "Parsing Complete." << endl;
 
 
 	file.close();
 }
 
-void Circuit::parseVector() 
+void Circuit::parseVector(std::string filename)
 {
 	using namespace std;
 
@@ -220,7 +233,7 @@ void Circuit::parseVector()
 	char value;
 	int delayTime;
 
-	file.open("Vector1_1.txt");
+	file.open(filename);
 
 	while (!file.eof())
 	{
@@ -228,8 +241,13 @@ void Circuit::parseVector()
 			if (firstWord == "INPUT")
 			{
 				file >> wireName >> delayTime >> value;
+				
+				Event temp(delayTime, getWirePtrFromWireName(wireName), value);
+				pQ.push(temp);
 			}
 	}
+
+	cout << "Parsing Complete." << endl;
 
 	file.close();
 }
