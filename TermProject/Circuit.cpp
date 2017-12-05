@@ -113,7 +113,7 @@ void Circuit::parseCircuit(std::string filename) {
 			gateArray[numOfGates] = temp;
 			numOfGates++;
 		}
-		if (firstWord == "AND")
+		if (firstWord == "AND" || firstWord == "OR" || firstWord == "NAND" || firstWord == "NOR" || firstWord == "XOR")
 		{
 			file >> data;
 			data = data[0];
@@ -131,95 +131,19 @@ void Circuit::parseCircuit(std::string filename) {
 			output = stoi(data);
 			checkWire(output);
 
-			Gate *temp = new Gate(AND, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
-			gateArray[numOfGates] = temp;
-			numOfGates++;
-		}
-		if (firstWord == "OR")
-		{
-			file >> data;
-			data = data[0];
-			eventTime = stoi(data);
+			Gate *temp = NULL;
 
-			file >> data;
-			input1 = stoi(data);
-			checkWire(input1);
+			if (firstWord == "AND")
+				temp = new Gate(AND, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
+			if (firstWord == "OR")
+				temp = new Gate(OR, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
+			if (firstWord == "NAND")
+				temp = new Gate(NAND, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
+			if (firstWord == "NOR")
+				temp = new Gate(NOR, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
+			if (firstWord == "XOR")
+				temp = new Gate(XOR, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
 
-			file >> data;
-			input2 = stoi(data);
-			checkWire(input2);
-
-			file >> data;
-			output = stoi(data);
-			checkWire(output);
-
-			Gate *temp = new Gate(OR, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
-			gateArray[numOfGates] = temp;
-			numOfGates++;
-		}
-		if (firstWord == "XOR")
-		{
-			file >> data;
-			data = data[0];
-			eventTime = stoi(data);
-
-			file >> data;
-			input1 = stoi(data);
-			checkWire(input1);
-
-			file >> data;
-			input2 = stoi(data);
-			checkWire(input2);
-
-			file >> data;
-			output = stoi(data);
-			checkWire(output);
-
-			Gate *temp = new Gate(XOR, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
-			gateArray[numOfGates] = temp;
-			numOfGates++;
-		}
-		if (firstWord == "NOR")
-		{
-			file >> data;
-			data = data[0];
-			eventTime = stoi(data);
-
-			file >> data;
-			input1 = stoi(data);
-			checkWire(input1);
-
-			file >> data;
-			input2 = stoi(data);
-			checkWire(input2);
-
-			file >> data;
-			output = stoi(data);
-			checkWire(output);
-
-			Gate *temp = new Gate(NOR, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
-			gateArray[numOfGates] = temp;
-			numOfGates++;
-		}
-		if (firstWord == "NAND")
-		{
-			file >> data;
-			data = data[0];
-			eventTime = stoi(data);
-
-			file >> data;
-			input1 = stoi(data);
-			checkWire(input1);
-
-			file >> data;
-			input2 = stoi(data);
-			checkWire(input2);
-
-			file >> data;
-			output = stoi(data);
-			checkWire(output);
-
-			Gate *temp = new Gate(NAND, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
 			gateArray[numOfGates] = temp;
 			numOfGates++;
 		}
