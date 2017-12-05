@@ -9,7 +9,9 @@ using namespace std;
 
 
 int main() {
-	/*
+	
+	priority_queue<Event> queueTest;
+
 	Wire *w1 = new Wire();
 	Wire *w2 = new Wire();
 	Wire *w3 = new Wire();
@@ -27,7 +29,10 @@ int main() {
 		queueTest.pop();
 		cout << currEvent.getTime() << "\t";
 	}
-	*/
+	
+	
+	
+	/*
 	Gate gate;
 
 	Wire *wire0 = new Wire();
@@ -38,25 +43,27 @@ int main() {
 	wire1->setValue('1');
 	wireX->setValue('X');
 
+	
+	char c = gate.getGateOutput(INPUT, wire0, wire0);
+	cout << c << endl;
+	c = gate.getGateOutput(INPUT, wire0, wire1);
+	cout << c << endl;
+	c = gate.getGateOutput(INPUT, wire1, wire0);
+	cout << c << endl;
+	c = gate.getGateOutput(INPUT, wire1, wire1);
+	cout << c << endl;
+	c = gate.getGateOutput(INPUT, wire0, wireX);
+	cout << c << endl;
+	c = gate.getGateOutput(INPUT, wireX, wire0);
+	cout << c << endl;
+	c = gate.getGateOutput(INPUT, wire1, wireX);
+	cout << c << endl;
+	c = gate.getGateOutput(INPUT, wireX, wire1);
+	cout << c << endl;
+	c = gate.getGateOutput(INPUT, wireX, wireX);
+	cout << c << endl;
+	*/
 
-	char c = gate.getGateOutput(XOR, wire0, wire0);
-	cout << c << endl;
-	c = gate.getGateOutput(XOR, wire0, wire1);
-	cout << c << endl;
-	c = gate.getGateOutput(XOR, wire1, wire0);
-	cout << c << endl;
-	c = gate.getGateOutput(XOR, wire1, wire1);
-	cout << c << endl;
-	c = gate.getGateOutput(XOR, wire0, wireX);
-	cout << c << endl;
-	c = gate.getGateOutput(XOR, wireX, wire0);
-	cout << c << endl;
-	c = gate.getGateOutput(XOR, wire1, wireX);
-	cout << c << endl;
-	c = gate.getGateOutput(XOR, wireX, wire1);
-	cout << c << endl;
-	c = gate.getGateOutput(XOR, wireX, wireX);
-	cout << c << endl;
 
 	return 0; 
 }
