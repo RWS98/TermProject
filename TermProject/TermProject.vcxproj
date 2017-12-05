@@ -159,8 +159,12 @@
     <ClCompile Include="Wire.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Circuit0.txt" />
+    <Text Include="Circuit0_v.txt" />
     <Text Include="Circuit1.txt" />
-    <Text Include="Vector1_1.txt" />
+    <Text Include="Circuit1_v.txt" />
+    <Text Include="flipflop.txt" />
+    <Text Include="flipflop_v.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
