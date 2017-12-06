@@ -12,8 +12,7 @@ class Gate {
 	private:
 		Wire *in1, *in2;
 		Wire *out;
-		int DelayTime;
-		
+		int DelayTime;	
 		GateType gT;
 	public:
 		Gate();
@@ -21,7 +20,7 @@ class Gate {
 		Gate(GateType gate, int delay, Wire *w1, Wire *w2);
 		Gate(GateType gate, int delay, Wire *w1, Wire *w2, Wire *w3);
 		int getDelayTime();
-		void ReCalc();
+		void ReCalc(Gate gate);
 		char getGateOutput(GateType gate, Wire *input1, Wire *input2);
 };
 

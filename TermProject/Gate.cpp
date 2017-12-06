@@ -2,41 +2,52 @@
 #include "Wire.h"
 
 
+//default constructor for gate
 Gate::Gate() {
 	in1 = NULL;
 	in2 = NULL;
 	out = NULL;
 }
 
+//constructor for INPUT and OUTPUT "gates"
 Gate::Gate(GateType gate, Wire *w1) {
 	gT = gate;
 	in1 = w1;
+	out->setValue(getGateOutput(gate, w1, NULL));
 }
 
+//constructor for NOT gate
 Gate::Gate(GateType gate, int delay, Wire *w1, Wire *w2) {
 	gT = gate;
 	DelayTime = delay;
 	out = w1;
 	in1 = w2;
 	in2 = NULL;
+	out->setValue(getGateOutput(gate, w1, NULL));
 }
 
+//constructor for every other two input one output gate ie. AND, NAND, NOR, OR, XOR
 Gate::Gate(GateType gate, int delay, Wire *w1, Wire *w2, Wire *w3) {
 	gT = gate;
 	DelayTime = delay;
 	out = w1;
 	in1 = w2;
 	in2 = w3;
+	out->setValue(getGateOutput(gate, w1, w2));
 }
 
+//return the delay time of a specific gate
 int Gate::getDelayTime() {
 	return DelayTime;
 }
 
-void Gate::ReCalc() {
+//recalculate the value of a gate when one wire changes values
+void Gate::ReCalc(Gate gate) {
 
 }
 
+
+//logic for all the gate outputs
 char Gate::getGateOutput(GateType gate, Wire *input1, Wire *input2) {
 	switch (gate) {
 		case AND:
