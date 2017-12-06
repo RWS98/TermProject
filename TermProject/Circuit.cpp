@@ -187,3 +187,14 @@ void Circuit::parseVector(std::string filename)
 
 	file.close();
 }
+
+void Circuit::simulate()
+{
+	while (!pQ.empty()) 
+	{
+		Event currEvent = pQ.top();
+		pQ.pop();
+		time = currEvent.getTime();
+		currEvent.execute();
+	}
+}

@@ -31,6 +31,7 @@ class Circuit {
 		void checkWire(int wireNum);
 		void parseCircuit(std::string filename);
 		void parseVector(std::string filename);
+		void simulate();
 };
 
 
