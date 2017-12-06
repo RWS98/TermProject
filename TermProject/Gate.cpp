@@ -42,8 +42,9 @@ int Gate::getDelayTime() {
 }
 
 //recalculate the value of a gate when one wire changes values
-void Gate::ReCalc(Gate gate) {
-
+char Gate::ReCalc() {
+	char output = getGateOutput(gT, in1, in2);
+	return output; 
 }
 
 
