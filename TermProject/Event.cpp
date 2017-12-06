@@ -3,7 +3,7 @@
 
 Event::Event(int eventTime, Wire *wireNum, char eventValue) {
 	time = eventTime; 
-	wirePtr->getName() = wireNum->getName();
+	wirePtr = wireNum;
 	value = eventValue;
 }
 
