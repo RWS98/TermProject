@@ -29,10 +29,7 @@ int main() {
 		queueTest.pop();
 		cout << currEvent.getTime() << "\t";
 	}
-	
-	
-	
-	/*
+	*/
 	Gate gate;
 
 	Wire *wire0 = new Wire();
@@ -60,10 +57,8 @@ int main() {
 	cout << c << endl;
 	c = gate.getGateOutput(INPUT, wireX, wire1);
 	cout << c << endl;
-	c = gate.getGateOutput(INPUT, wireX, wireX);
+	c = gate.getGateOutput(XOR, wireX, wireX);
 	cout << c << endl;
-	*/
-
 
 	return 0; 
 }
