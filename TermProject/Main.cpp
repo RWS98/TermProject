@@ -10,7 +10,7 @@ using namespace std;
 
 int main() {
 	
-	priority_queue<Event> queueTest;
+	/*priority_queue<Event> queueTest;
 
 	Wire *w1 = new Wire();
 	Wire *w2 = new Wire();
@@ -29,7 +29,7 @@ int main() {
 		queueTest.pop();
 		cout << currEvent.getTime() << "\t";
 	}
-	*/
+	
 	Gate gate;
 
 	Wire *wire0 = new Wire();
@@ -60,5 +60,17 @@ int main() {
 	c = gate.getGateOutput(XOR, wireX, wireX);
 	cout << c << endl;
 
-	return 0; 
+	return 0; */
+
+	Circuit theCircuit;
+	string fileName;
+
+	cout << "What circuit file would you like to open?  ";
+	cin >> fileName;
+	theCircuit.parseCircuit(fileName);
+	cout << "What vector file would you like to open?  ";
+	cin >> fileName;
+	theCircuit.parseVector(fileName);
+
+	return 0;
 }
