@@ -28,9 +28,11 @@ class Circuit {
 		~Circuit();
 		Wire *getWirePtrFromWireNum(int num);
 		Wire *getWirePtrFromWireName(std::string s);
+		Gate *getOutputGate();
 		void checkWire(int wireNum);
 		void parseCircuit(std::string filename);
 		void parseVector(std::string filename);
+		void simulate();
 };
 
 
