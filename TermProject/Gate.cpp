@@ -12,8 +12,12 @@ Gate::Gate() {
 //constructor for INPUT and OUTPUT "gates"
 Gate::Gate(GateType gate, Wire *w1) {
 	gT = gate;
-	in1 = w1;
-	out->setValue(getGateOutput());
+	if (gate == INPUT) {
+		in1 = w1;
+	}
+	if (gate == OUTPUT) {
+		out = w1;
+	}
 }
 
 //constructor for NOT gate
@@ -23,7 +27,6 @@ Gate::Gate(GateType gate, int delay, Wire *w1, Wire *w2) {
 	out = w1;
 	in1 = w2;
 	in2 = NULL;
-	out->setValue(getGateOutput());
 }
 
 //constructor for every other two input one output gate ie. AND, NAND, NOR, OR, XOR
@@ -33,7 +36,6 @@ Gate::Gate(GateType gate, int delay, Wire *w1, Wire *w2, Wire *w3) {
 	out = w1;
 	in1 = w2;
 	in2 = w3;
-	out->setValue(getGateOutput());
 }
 
 //return the delay time of a specific gate
