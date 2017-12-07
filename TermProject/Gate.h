@@ -22,7 +22,7 @@ class Gate {
 		int getDelayTime();
 		GateType getGT();
 		char ReCalc();
-		char getGateOutput(GateType gate, Wire *input1, Wire *input2);
+		char getGateOutput();
 };
 
 

@@ -207,6 +207,6 @@ void Circuit::simulate()
 		time = currEvent.getTime();
 		currEvent.execute();
 
-		std::cout << getOutputGate()->getGateOutput << std::endl;
+		std::cout << getOutputGate()->getGateOutput() << std::endl;
 	}
 }
