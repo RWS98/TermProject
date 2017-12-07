@@ -21,3 +21,8 @@ void Wire::setName(std::string str) {
 std::string Wire::getName() {
 	return this->name;
 }
+
+Gate * Wire::getInputGatePtr()
+{
+	return in;
+}

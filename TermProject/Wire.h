@@ -19,6 +19,7 @@ class Wire {
 		char getValue();
 		void setName(std::string str);
 		std::string getName();
+		Gate *getInputGatePtr();
 };
 
 
