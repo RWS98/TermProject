@@ -26,9 +26,12 @@ bool Event::operator<(const Event &ev) const {
 
 void Event::execute() {
 	wirePtr->setValue(value);
-	Gate *gatePtr = wirePtr->getInputGatePtr();
+
+	Gate *gatePtr;
+	gatePtr = wirePtr->getInputGatePtr();
 	gatePtr->ReCalc();
-	delete gatePtr; 
+
+	//delete gatePtr; 
 }
 
 int Event::getTime() {

@@ -46,7 +46,7 @@ void Circuit::checkWire(int wireNum)
 {
 	if (wireArray[wireNum - 1] == NULL)
 	{
-		Wire *temp = new Wire;
+		Wire *temp = new Wire();
 		wireArray[wireNum - 1] = temp;
 	}
 }
@@ -91,6 +91,8 @@ void Circuit::parseCircuit(std::string filename)
 			Gate *temp = new Gate(INPUT, getWirePtrFromWireNum(wireNum));
 			gateArray[numOfGates] = temp;
 			numOfGates++;
+
+			getWirePtrFromWireNum(wireNum)->setInput(temp);
 		}
 		if (firstWord == "OUTPUT")
 		{
@@ -200,13 +202,14 @@ void Circuit::parseVector(std::string filename)
 
 void Circuit::simulate()
 {
-	while (!pQ.empty()) 
+	std::cout << "stuff" << std::endl;
+	while (!pQ.empty())
 	{
 		Event currEvent = pQ.top();
 		pQ.pop();
 		time = currEvent.getTime();
 		currEvent.execute();
 
-		std::cout << getOutputGate()->getGateOutput() << std::endl;
 	}
+	std::cout << getOutputGate()->getGateOutput() << std::endl;
 }

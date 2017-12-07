@@ -17,7 +17,6 @@ const int MAX_GATES = 20;
 class Circuit {
 	private:
 		int time;
-		int numWires;
 		Wire *wireArray[MAX_WIRES];
 		Gate *gateArray[MAX_GATES];
 		int numOfGates = 0;

@@ -18,11 +18,22 @@ void Wire::setName(std::string str) {
 	this->name = str;
 }
 
+void Wire::setOutput(Gate * gate)
+{
+	out[totalOutputs] = gate;
+	totalOutputs++;
+}
+
+void Wire::setInput(Gate * gate)
+{
+	in = gate;
+}
+
 std::string Wire::getName() {
 	return this->name;
 }
 
 Gate * Wire::getInputGatePtr()
 {
-	return in;
+	return out[MAX_FANOUT];
 }

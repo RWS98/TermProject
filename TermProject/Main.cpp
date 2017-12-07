@@ -48,11 +48,13 @@ int main() {
 	string fileName;
 
 	cout << "What circuit file would you like to open?  ";
-	cin >> fileName;
-	theCircuit.parseCircuit(fileName);
+	//cin >> fileName;
+	theCircuit.parseCircuit("Circuit0.txt");
 	cout << "What vector file would you like to open?  ";
-	cin >> fileName;
-	theCircuit.parseVector(fileName);
+	//cin >> fileName;
+	theCircuit.parseVector("Circuit0_v.txt");
+
+	theCircuit.simulate();
 
 	return 0;
 }
