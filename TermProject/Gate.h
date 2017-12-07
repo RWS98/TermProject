@@ -20,7 +20,6 @@ class Gate {
 		Gate(GateType gate, int delay, Wire *w1, Wire *w2);
 		Gate(GateType gate, int delay, Wire *w1, Wire *w2, Wire *w3);
 		int getDelayTime();
-		void ReCalc(Gate gate);
 		GateType getGT();
 		char ReCalc();
 		char getGateOutput(GateType gate, Wire *input1, Wire *input2);
