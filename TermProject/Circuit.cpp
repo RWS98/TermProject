@@ -33,6 +33,15 @@ Wire * Circuit::getWirePtrFromWireName(std::string s)
 	}
 }
 
+Gate * Circuit::getOutputGate()
+{
+	for (int i = 0; i < MAX_GATES; i++)
+	{
+		if (gateArray[i]->getGT() == OUTPUT)
+			return gateArray[i];
+	}
+}
+
 void Circuit::checkWire(int wireNum)
 {
 	if (wireArray[wireNum - 1] == NULL)
@@ -42,7 +51,8 @@ void Circuit::checkWire(int wireNum)
 	}
 }
 
-void Circuit::parseCircuit(std::string filename) {
+void Circuit::parseCircuit(std::string filename)
+{
 
 	using namespace std;
 
@@ -196,5 +206,7 @@ void Circuit::simulate()
 		pQ.pop();
 		time = currEvent.getTime();
 		currEvent.execute();
+
+		std::cout << getOutputGate()->getGateOutput << std::endl;
 	}
 }

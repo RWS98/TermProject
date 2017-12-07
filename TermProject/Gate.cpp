@@ -46,6 +46,11 @@ void Gate::ReCalc(Gate gate) {
 
 }
 
+GateType Gate::getGT()
+{
+	return gT;
+}
+
 
 //logic for all the gate outputs
 char Gate::getGateOutput(GateType gate, Wire *input1, Wire *input2) {
