@@ -35,5 +35,5 @@ std::string Wire::getName() {
 
 Gate * Wire::getInputGatePtr()
 {
-	return out[MAX_FANOUT];
+	return out[0];
 }

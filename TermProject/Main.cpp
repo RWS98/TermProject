@@ -11,18 +11,6 @@ using namespace std;
 int main() {
 	
 	/*
-	
-	Gate gate;
-
-	Wire *wire0 = new Wire();
-	Wire *wire1 = new Wire();
-	Wire *wireX = new Wire();
-
-	wire0->setValue('0');
-	wire1->setValue('1');
-	wireX->setValue('X');
-
-	
 	char c = gate.getGateOutput(INPUT, wire0, wire0);
 	cout << c << endl;
 	c = gate.getGateOutput(INPUT, wire0, wire1);
@@ -49,10 +37,10 @@ int main() {
 
 	cout << "What circuit file would you like to open?  ";
 	//cin >> fileName;
-	theCircuit.parseCircuit("Circuit0.txt");
+	theCircuit.parseCircuit("Circuit1.txt");
 	cout << "What vector file would you like to open?  ";
 	//cin >> fileName;
-	theCircuit.parseVector("Circuit0_v.txt");
+	theCircuit.parseVector("Circuit1_v.txt");
 
 	theCircuit.simulate();
 

@@ -13,11 +13,13 @@ Gate::Gate() {
 Gate::Gate(GateType gate, Wire *w1) {
 	gT = gate;
 	if (gate == INPUT) {
-		in1 = w1;
-	}
-	if (gate == OUTPUT) {
 		out = w1;
 	}
+	if (gate == OUTPUT) {
+		in1 = w1;
+	}
+	in2 = NULL;
+	DelayTime = 0; 
 }
 
 //constructor for NOT gate
@@ -45,8 +47,8 @@ int Gate::getDelayTime() {
 
 //recalculate the value of a gate when one wire changes values
 char Gate::ReCalc() {
-	char output = this->getGateOutput();
-	return output; 
+
+	return getGateOutput();;
 }
 
 GateType Gate::getGT()
@@ -126,7 +128,7 @@ char Gate::getGateOutput() {
 			}
 			break;
 		case INPUT:
-			return in1->getValue();
+			return out->getValue();
 			break;
 		case OUTPUT:
 			return in1->getValue();

@@ -28,9 +28,8 @@ Wire * Circuit::getWirePtrFromWireName(std::string s)
 		{
 			return wireArray[i];
 		}
-		else
-			return nullptr;
 	}
+	return nullptr;
 }
 
 Gate * Circuit::getOutputGate()
@@ -106,6 +105,8 @@ void Circuit::parseCircuit(std::string filename)
 			Gate *temp = new Gate(OUTPUT, getWirePtrFromWireNum(wireNum));
 			gateArray[numOfGates] = temp;
 			numOfGates++;
+
+			getWirePtrFromWireNum(wireNum)->setOutput(temp);
 		}
 		if (firstWord == "NOT")
 		{
@@ -124,6 +125,9 @@ void Circuit::parseCircuit(std::string filename)
 			Gate *temp = new Gate(NOT, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1));
 			gateArray[numOfGates] = temp;
 			numOfGates++;
+
+			getWirePtrFromWireNum(input1)->setOutput(temp);
+			getWirePtrFromWireNum(output)->setInput(temp);
 		}
 		if (firstWord == "AND" || firstWord == "OR" || firstWord == "NAND" || firstWord == "NOR" || firstWord == "XOR")
 		{
@@ -145,19 +149,28 @@ void Circuit::parseCircuit(std::string filename)
 
 			Gate *temp = NULL;
 
-			if (firstWord == "AND")
+			if (firstWord == "AND") {
 				temp = new Gate(AND, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
-			if (firstWord == "OR")
+			}
+			if (firstWord == "OR") {
 				temp = new Gate(OR, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
-			if (firstWord == "NAND")
+			}
+			if (firstWord == "NAND") {
 				temp = new Gate(NAND, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
-			if (firstWord == "NOR")
+			}
+			if (firstWord == "NOR") {
 				temp = new Gate(NOR, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
-			if (firstWord == "XOR")
+			}
+			if (firstWord == "XOR") {
 				temp = new Gate(XOR, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
+			}
 
 			gateArray[numOfGates] = temp;
 			numOfGates++;
+
+			getWirePtrFromWireNum(input1)->setOutput(temp);
+			getWirePtrFromWireNum(input2)->setOutput(temp);
+			getWirePtrFromWireNum(output)->setInput(temp);
 		}
 	}
 
@@ -188,7 +201,9 @@ void Circuit::parseVector(std::string filename)
 		file >> firstWord;
 			if (firstWord == "INPUT")
 			{
-				file >> wireName >> delayTime >> value;
+				file >> wireName;
+				file >> delayTime;
+				file >> value;
 				
 				Event temp(delayTime, getWirePtrFromWireName(wireName), value);
 				pQ.push(temp);
@@ -202,14 +217,12 @@ void Circuit::parseVector(std::string filename)
 
 void Circuit::simulate()
 {
-	std::cout << "stuff" << std::endl;
 	while (!pQ.empty())
 	{
 		Event currEvent = pQ.top();
 		pQ.pop();
 		time = currEvent.getTime();
 		currEvent.execute();
-
 	}
-	std::cout << getOutputGate()->getGateOutput() << std::endl;
+	
 }
