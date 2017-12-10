@@ -32,7 +32,7 @@ std::string Wire::getName()
 	return this->name;
 }
 
-Gate * Wire::getInputGatePtr()
+Gate * Wire::getInputGatePtr(int gateNum)
 {
-	return out[0];
+	return out[gateNum];
 }

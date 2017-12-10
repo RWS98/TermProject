@@ -38,7 +38,7 @@ void Event::execute()
 {
 		wirePtr->setValue(value);
 		std::cout << "At Time " << time << " the output value is ";
-		std::cout << wirePtr->getInputGatePtr()->getGateOutput() << std::endl;
+		std::cout << wirePtr->getInputGatePtr(gateNum)->getGateOutput() << std::endl;
 }
 
 //returns the event time

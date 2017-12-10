@@ -229,15 +229,21 @@ void Circuit::parseVector(std::string filename)
 	file.close();
 }
 
-void Circuit::simulate()
+void Circuit::simulate(int globalTime)
 {
+	globalTime = time - 1;
 	//run through the queue and execute each event
 	while (!pQ.empty())
 	{
 		Event currEvent = pQ.top();
+		Event prevEvent = currEvent; 
 		pQ.pop();
 		time = currEvent.getTime();
-		currEvent.execute();
+		if (globalTime != time)
+		{
+			currEvent.execute();
+			globalTime++;
+		}
 	}
 	
 }

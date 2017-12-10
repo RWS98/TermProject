@@ -11,6 +11,7 @@ class Event
 		char value;
 		int tieBreaker;
 		static int eventNum;
+		int gateNum; 
 	public:
 		Event(int eventTime, Wire *wireNum, char eventValue);
 		bool operator<(const Event &ev) const;

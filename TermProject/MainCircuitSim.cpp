@@ -13,21 +13,23 @@
 
 using namespace std; 
 
+
 int main() {
 
 	cout << "Circuit Simulator: " << endl << "\t";
 
 	Circuit theCircuit;
 	string fileName;
+	int globalTime = 0;
 
 	cout << "What circuit file would you like to open?  ";
-	cin >> fileName;
-	theCircuit.parseCircuit(fileName);
+	//cin >> fileName;
+	theCircuit.parseCircuit("Circuit1.txt");
 	cout << "\tWhat vector file would you like to open?  ";
-	cin >> fileName;
-	theCircuit.parseVector(fileName);
+	//cin >> fileName;
+	theCircuit.parseVector("Circuit1_v.txt");
 
-	theCircuit.simulate();
+	theCircuit.simulate(globalTime);
 
 	return 0;
 }
