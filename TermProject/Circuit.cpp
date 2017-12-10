@@ -1,9 +1,11 @@
+//Authors: David Bogacz and Robert Schultz
+//Date: 12/10/12
+//Assignment: HW6-Term Project
+//File: Circuit Implementation file  
+
 #include "Circuit.h"
 
-Circuit::Circuit() {
-
-}
-
+//destructor 
 Circuit::~Circuit()
 {
 	for (int i = 0; i < MAX_WIRES; i++)
@@ -16,10 +18,13 @@ Circuit::~Circuit()
 	}
 }
 
-Wire* Circuit::getWirePtrFromWireNum(int num) {
+//gets the wire pointer from the wire number
+Wire* Circuit::getWirePtrFromWireNum(int num) 
+{
 	return wireArray[num - 1];
 }
 
+//gets the wire pointer from the wire name
 Wire * Circuit::getWirePtrFromWireName(std::string s)
 {
 	for (int i = 0; i < MAX_WIRES; i++)
@@ -32,15 +37,18 @@ Wire * Circuit::getWirePtrFromWireName(std::string s)
 	return nullptr;
 }
 
+//returns a pointer to the gate which leads to the output wire of the circuit
 Gate * Circuit::getOutputGate()
 {
 	for (int i = 0; i < MAX_GATES; i++)
 	{
-		if (gateArray[i]->getGT() == OUTPUT)
+		if (gateArray[i]->getGT() == OUTPUT) {
 			return gateArray[i];
+		}
 	}
 }
 
+//checks if a wire has already been created and if not it creates one
 void Circuit::checkWire(int wireNum)
 {
 	if (wireArray[wireNum - 1] == NULL)
@@ -50,11 +58,10 @@ void Circuit::checkWire(int wireNum)
 	}
 }
 
+//parses the circuit file 
 void Circuit::parseCircuit(std::string filename)
 {
-
 	using namespace std;
-
 
 	ifstream file;
 
@@ -74,10 +81,12 @@ void Circuit::parseCircuit(std::string filename)
 	{
 		file >> firstWord;
 
+		//disregard the header line of the input file
 		if (firstWord == "CIRCUIT")
 		{
 			file >> circuitName;
 		}
+
 		if (firstWord == "INPUT")
 		{
 			file >> wireName;
@@ -149,19 +158,24 @@ void Circuit::parseCircuit(std::string filename)
 
 			Gate *temp = NULL;
 
-			if (firstWord == "AND") {
+			if (firstWord == "AND") 
+			{
 				temp = new Gate(AND, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
 			}
-			if (firstWord == "OR") {
+			if (firstWord == "OR")
+			{
 				temp = new Gate(OR, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
 			}
-			if (firstWord == "NAND") {
+			if (firstWord == "NAND")
+			{
 				temp = new Gate(NAND, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
 			}
-			if (firstWord == "NOR") {
+			if (firstWord == "NOR")
+			{
 				temp = new Gate(NOR, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
 			}
-			if (firstWord == "XOR") {
+			if (firstWord == "XOR")
+			{
 				temp = new Gate(XOR, eventTime, getWirePtrFromWireNum(output), getWirePtrFromWireNum(input1), getWirePtrFromWireNum(input2));
 			}
 
@@ -176,10 +190,10 @@ void Circuit::parseCircuit(std::string filename)
 
 	cout << "Parsing Complete." << endl;
 
-
 	file.close();
 }
 
+//parse the vector input file
 void Circuit::parseVector(std::string filename)
 {
 	using namespace std;
@@ -196,7 +210,7 @@ void Circuit::parseVector(std::string filename)
 
 	file.open(filename);
 
-	while (!file.eof())
+	while (getline(file, firstWord))
 	{
 		file >> firstWord;
 			if (firstWord == "INPUT")
@@ -217,6 +231,7 @@ void Circuit::parseVector(std::string filename)
 
 void Circuit::simulate()
 {
+	//run through the queue and execute each event
 	while (!pQ.empty())
 	{
 		Event currEvent = pQ.top();

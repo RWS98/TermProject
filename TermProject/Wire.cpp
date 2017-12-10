@@ -1,20 +1,18 @@
 #include "Wire.h"
 #include "Gate.h"
 
-
-Wire::Wire() {
-
-}
-
-void Wire::setValue(char input) {
+void Wire::setValue(char input) 
+{
 	wireValue = input;
 }
 
-char Wire::getValue() {
+char Wire::getValue() 
+{
 	return wireValue;
 }
 
-void Wire::setName(std::string str) {
+void Wire::setName(std::string str) 
+{
 	this->name = str;
 }
 
@@ -29,7 +27,8 @@ void Wire::setInput(Gate * gate)
 	in = gate;
 }
 
-std::string Wire::getName() {
+std::string Wire::getName() 
+{
 	return this->name;
 }
 

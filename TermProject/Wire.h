@@ -7,7 +7,8 @@ const int MAX_FANOUT = 10;
 
 class Gate;
 
-class Wire {
+class Wire
+{
 	private:
 		Gate *in;
 		Gate *out[MAX_FANOUT];
@@ -15,7 +16,6 @@ class Wire {
 		std::string name = ""; 
 		char wireValue = 'X';
 	public:
-		Wire();
 		void setValue(char input);
 		char getValue();
 		void setName(std::string str);
@@ -24,6 +24,5 @@ class Wire {
 		std::string getName();
 		Gate *getInputGatePtr();
 };
-
 
 #endif //WIRE.h

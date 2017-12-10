@@ -1,21 +1,24 @@
 #include "Gate.h"
 #include "Wire.h"
 
-
 //default constructor for gate
-Gate::Gate() {
+Gate::Gate() 
+{
 	in1 = NULL;
 	in2 = NULL;
 	out = NULL;
 }
 
 //constructor for INPUT and OUTPUT "gates"
-Gate::Gate(GateType gate, Wire *w1) {
+Gate::Gate(GateType gate, Wire *w1) 
+{
 	gT = gate;
-	if (gate == INPUT) {
+	if (gate == INPUT) 
+	{
 		out = w1;
 	}
-	if (gate == OUTPUT) {
+	if (gate == OUTPUT) 
+	{
 		in1 = w1;
 	}
 	in2 = NULL;
@@ -23,7 +26,8 @@ Gate::Gate(GateType gate, Wire *w1) {
 }
 
 //constructor for NOT gate
-Gate::Gate(GateType gate, int delay, Wire *w1, Wire *w2) {
+Gate::Gate(GateType gate, int delay, Wire *w1, Wire *w2) 
+{
 	gT = gate;
 	DelayTime = delay;
 	out = w1;
@@ -32,7 +36,8 @@ Gate::Gate(GateType gate, int delay, Wire *w1, Wire *w2) {
 }
 
 //constructor for every other two input one output gate ie. AND, NAND, NOR, OR, XOR
-Gate::Gate(GateType gate, int delay, Wire *w1, Wire *w2, Wire *w3) {
+Gate::Gate(GateType gate, int delay, Wire *w1, Wire *w2, Wire *w3) 
+{
 	gT = gate;
 	DelayTime = delay;
 	out = w1;
@@ -41,17 +46,19 @@ Gate::Gate(GateType gate, int delay, Wire *w1, Wire *w2, Wire *w3) {
 }
 
 //return the delay time of a specific gate
-int Gate::getDelayTime() {
+int Gate::getDelayTime() 
+{
 	return DelayTime;
 }
 
 //recalculate the value of a gate when one wire changes values
-char Gate::ReCalc() {
-
-	return getGateOutput();;
+char Gate::ReCalc() 
+{
+	return getGateOutput();
 }
 
-GateType Gate::getGT()
+//returns the gate type
+GateType Gate::getGT() 
 {
 	return gT;
 }

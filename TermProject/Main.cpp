@@ -1,3 +1,5 @@
+/*
+
 #include "Circuit.h"
 #include "Gate.h"
 #include "Event.h"
@@ -10,7 +12,7 @@ using namespace std;
 
 int main() {
 	
-	/*
+	
 	char c = gate.getGateOutput(INPUT, wire0, wire0);
 	cout << c << endl;
 	c = gate.getGateOutput(INPUT, wire0, wire1);
@@ -30,7 +32,7 @@ int main() {
 	c = gate.getGateOutput(XOR, wireX, wireX);
 	cout << c << endl;
 
-	return 0; */
+	return 0; 
 
 	Circuit theCircuit;
 	string fileName;
@@ -46,3 +48,5 @@ int main() {
 
 	return 0;
 }
+
+*/

@@ -3,7 +3,8 @@
 
 #include "Wire.h"
 
-class Event {
+class Event
+{
 	private:
 		int time; 
 		Wire *wirePtr;
@@ -16,6 +17,5 @@ class Event {
 		void execute();
 		int getTime();
 };
-
 
 #endif //EVENT.h

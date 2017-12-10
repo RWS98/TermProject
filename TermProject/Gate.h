@@ -8,7 +8,8 @@ enum GateType { AND, OR, NAND, NOR, NOT, XOR, INPUT, OUTPUT };
 
 class Wire;
 
-class Gate {
+class Gate 
+{
 	private:
 		Wire *in1, *in2;
 		Wire *out;
@@ -24,6 +25,5 @@ class Gate {
 		char ReCalc();
 		char getGateOutput();
 };
-
 
 #endif //GATE.h

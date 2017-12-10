@@ -14,7 +14,8 @@
 const int MAX_WIRES = 10;
 const int MAX_GATES = 20;
 
-class Circuit {
+class Circuit
+{
 	private:
 		int time;
 		Wire *wireArray[MAX_WIRES];
@@ -23,7 +24,6 @@ class Circuit {
 		std::string circuitName;
 		std::priority_queue<Event> pQ;
 	public:
-		Circuit();
 		~Circuit();
 		Wire *getWirePtrFromWireNum(int num);
 		Wire *getWirePtrFromWireName(std::string s);
@@ -33,6 +33,5 @@ class Circuit {
 		void parseVector(std::string filename);
 		void simulate();
 };
-
 
 #endif //CIRCUIT.H
