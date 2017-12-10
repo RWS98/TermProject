@@ -1,3 +1,8 @@
+//Authors: David Bogacz and Robert Schultz
+//Date: 12/10/12
+//Assignment: HW6-Term Project
+//File: Gate Header File
+
 #ifndef GATE
 #define GATE
 
