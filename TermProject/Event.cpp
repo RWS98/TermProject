@@ -103,8 +103,3 @@ void Event::setIsActual(bool b)
 {
 	isActual = b;
 }
-
-void Event::setTime(int newtime)
-{
-	time = newtime; 
-}

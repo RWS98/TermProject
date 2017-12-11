@@ -25,7 +25,6 @@ class Event
 		Event * execute(int globalTime, Gate *gate, int &loops);
 		int getTime();
 		void setIsActual(bool b);
-		void setTime(int newtime);
 };
 
 #endif //EVENT.h

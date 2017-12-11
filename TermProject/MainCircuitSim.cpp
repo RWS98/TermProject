@@ -23,11 +23,11 @@ int main() {
 	int globalTime = 0;
 
 	cout << "What circuit file would you like to open?  ";
-	//cin >> fileName;
-	theCircuit.parseCircuit("Circuit1.txt");
+	cin >> fileName;
+	theCircuit.parseCircuit(fileName);
 	cout << "\tWhat vector file would you like to open?  ";
-	//cin >> fileName;
-	theCircuit.parseVector("Circuit1_v.txt");
+	cin >> fileName;
+	theCircuit.parseVector(fileName);
 
 	theCircuit.simulate(globalTime);
 
