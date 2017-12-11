@@ -1,4 +1,4 @@
-//Authors: David Bogacz and Robert Schultz
+//Authors: David Bogacz and Robert Shoultz
 //Date: 12/10/12
 //Assignment: HW6-Term Project
 //File: Gate Header File

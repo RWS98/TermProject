@@ -1,4 +1,4 @@
-//Authors: David Bogacz and Robert Schultz
+//Authors: David Bogacz and Robert Shoultz
 //Date: 12/10/12
 //Assignment: HW6-Term Project
 //Purpose: To create a basic circuit simulator to take in two input files and create a circuit and run a simulation of the created circuit
