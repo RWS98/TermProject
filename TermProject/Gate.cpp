@@ -57,9 +57,10 @@ int Gate::getDelayTime()
 }
 
 //recalculate the value of a gate when one wire changes values
-char Gate::ReCalc() 
+Event Gate::ReCalc() 
 {
-	return getGateOutput();
+	Event newEvent = Event(DelayTime, out, getGateOutput());
+	return newEvent; 
 }
 
 //returns the gate type

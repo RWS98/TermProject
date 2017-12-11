@@ -8,6 +8,7 @@
 
 #include "Wire.h"
 #include "Circuit.h"
+#include "Event.h"
 
 enum GateType { AND, OR, NAND, NOR, NOT, XOR, INPUT, OUTPUT };
 
@@ -27,7 +28,7 @@ class Gate
 		Gate(GateType gate, int delay, Wire *w1, Wire *w2, Wire *w3);
 		int getDelayTime();
 		GateType getGT();
-		char ReCalc();
+		Event ReCalc();
 		char getGateOutput();
 };
 

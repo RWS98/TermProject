@@ -6,6 +6,10 @@
 #include "Event.h"
 #include "Circuit.h"
 
+Event::Event()
+{
+}
+
 //constructor for event 
 Event::Event(int eventTime, Wire *wireNum, char eventValue)
 {
@@ -41,9 +45,9 @@ bool Event::operator<(const Event &ev) const
 //executes the simulation 
 void Event::execute() 
 {
-		wirePtr->setValue(value);
-		std::cout << "At Time " << time << " the output value is ";
-		std::cout << wirePtr->getInputGatePtr(gateNum)->getGateOutput() << std::endl;
+	wirePtr->setValue(value);
+	std::cout << "At Time " << time << " the output value is ";
+	std::cout << wirePtr->getInputGatePtr(gateNum)->getGateOutput() << std::endl;
 }
 
 //returns the event time

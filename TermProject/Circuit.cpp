@@ -231,12 +231,22 @@ void Circuit::parseVector(std::string filename)
 
 void Circuit::simulate(int globalTime)
 {
+	int tempQueueSize = pQ.size();
 	globalTime = time - 1;
 	//run through the queue and execute each event
 	while (!pQ.empty())
 	{
+		if (tempQueueSize != 0)
+		{
+			for (int i = 0; i < numOfGates; i++)
+			{
+				Event newEvent = gateArray[i]->ReCalc();
+				pQ.push(newEvent);
+			}
+			tempQueueSize--;
+		}
+		
 		Event currEvent = pQ.top();
-		Event prevEvent = currEvent; 
 		pQ.pop();
 		time = currEvent.getTime();
 		if (globalTime != time)
@@ -245,5 +255,4 @@ void Circuit::simulate(int globalTime)
 			globalTime++;
 		}
 	}
-	
 }

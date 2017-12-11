@@ -18,6 +18,7 @@ class Event
 		static int eventNum;
 		int gateNum; 
 	public:
+		Event();
 		Event(int eventTime, Wire *wireNum, char eventValue);
 		bool operator<(const Event &ev) const;
 		void execute();
