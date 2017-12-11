@@ -16,13 +16,16 @@ class Event
 		char value;
 		int tieBreaker;
 		static int eventNum;
-		int gateNum; 
+		int gateNum = 0;
+		bool isActual = false;
 	public:
 		Event();
 		Event(int eventTime, Wire *wireNum, char eventValue);
 		bool operator<(const Event &ev) const;
-		void execute();
+		Event * execute(int globalTime, Gate *gate, int &loops);
 		int getTime();
+		void setIsActual(bool b);
+		void setTime(int newtime);
 };
 
 #endif //EVENT.h

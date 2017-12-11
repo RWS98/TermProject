@@ -81,7 +81,6 @@ void Circuit::parseCircuit(std::string filename)
 	{
 		file >> firstWord;
 
-		//disregard the header line of the input file
 		if (firstWord == "CIRCUIT")
 		{
 			file >> circuitName;
@@ -231,21 +230,24 @@ void Circuit::parseVector(std::string filename)
 
 void Circuit::simulate(int globalTime)
 {
-	int tempQueueSize = pQ.size();
+	/*int tempQueueSize = pQ.size();
 	globalTime = time - 1;
 	//run through the queue and execute each event
 	while (!pQ.empty())
 	{
+		/*
 		if (tempQueueSize != 0)
 		{
 			for (int i = 0; i < numOfGates; i++)
 			{
 				Event newEvent = gateArray[i]->ReCalc();
+				newEvent.setTime(newEvent.getTime()+time);
 				pQ.push(newEvent);
 			}
 			tempQueueSize--;
 		}
 		
+
 		Event currEvent = pQ.top();
 		pQ.pop();
 		time = currEvent.getTime();
@@ -254,5 +256,31 @@ void Circuit::simulate(int globalTime)
 			currEvent.execute();
 			globalTime++;
 		}
+	}*/
+
+	int timeOutputted = 0;
+
+	while (!pQ.empty())
+	{
+		int stuff = 0;
+		Event currEvent = pQ.top();
+		Gate *gatePtr = getOutputGate();
+		globalTime = currEvent.getTime();
+		pQ.pop();
+		Event * returned = currEvent.execute(globalTime, gatePtr, stuff);
+
+		for (int i = 0; i < stuff; i++)
+		{
+			pQ.push(returned[i]);
+		}
+	
+		if (timeOutputted != globalTime)
+		{
+			std::cout << "At Time " << globalTime << " the output value is ";
+			std::cout << gatePtr->getGateOutput() << std::endl;
+			timeOutputted = globalTime;
+		}
 	}
+
+	
 }

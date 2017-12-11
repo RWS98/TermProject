@@ -28,8 +28,9 @@ class Gate
 		Gate(GateType gate, int delay, Wire *w1, Wire *w2, Wire *w3);
 		int getDelayTime();
 		GateType getGT();
-		Event ReCalc();
+		void ReCalc();
 		char getGateOutput();
+		Wire * getOutputWirePtr();
 };
 
 #endif //GATE.h

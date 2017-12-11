@@ -27,7 +27,7 @@ class Wire
 		void setOutput(Gate *gate);
 		void setInput(Gate *gate);
 		std::string getName();
-		Gate *getInputGatePtr(int gateNum);
+		Gate *getOutputGatePtr(int gateNum);
 };
 
 #endif //WIRE.h
